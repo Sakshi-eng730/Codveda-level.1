@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #282c34;
+            color: #fff;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        .hero {
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 4rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+           }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1a1d23;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">MyBrand</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#register">Register Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Project</h1>
+            <p>Building responsive and modern web interfaces.</p>
+            <a href="#register" class="btn">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="register" class="form-section">
+        <div class="form-container">
+            <h2>Register Form</h2>
+            <form id="myForm">
+                <div class="input-group">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" placeholder="Enter your name">
+                    <span class="error" id="nameError">Name is required</span>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email">
+                    <span class="error" id="emailError">Enter a valid email</span>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <p id="successMsg" class="success"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Codveda Internship Project. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const name = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+
+            if (email === '' || !email.includes('@')) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+
+            if (isValid) {
+                document.getElementById('successMsg').innerText = "Form submitted successfully!";
+            } else {
+                document.getElementById('successMsg').innerText = "";
+            }
+        });
+    </script>
+</body>
+</html>
